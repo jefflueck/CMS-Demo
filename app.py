@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 bcrypt = Bcrypt()
 app.config.from_object(__name__)
-uri = os.environ.get('DATABASE_URL', 'postgresql:///cms')# or other relevant config var
+uri = os.environ.get('DATABASE_URL', 'postgresql:///cms-demo')# or other relevant config var
 if uri and uri.startswith("postgres://"):
     uri = uri.replace("postgres://", "postgresql://", 1)
 app.config['SQLALCHEMY_DATABASE_URI'] = uri
@@ -46,9 +46,8 @@ mail = Mail(app)
 toolbar = DebugToolbarExtension(app)
 
 
-
 connect_db(app)
-
+db.create_all()
 
 
 @app.route('/')
@@ -65,7 +64,7 @@ def show_register_form():
     last_name = form.last_name.data
     phone = form.phone.data
     email = form.email.data
-    user = User.register(username=username, password=password, first_name=first_name, last_name=last_name, phone=phone, email=email, is_admin=True)
+    user = User.register(username=username, password=password, first_name=first_name, last_name=last_name, phone=phone, email=email, is_admin=False)
     db.session.add(user)
     db.session.commit()
     session['user_id'] = user.id
