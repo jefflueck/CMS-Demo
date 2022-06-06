@@ -1,3 +1,8 @@
+# This is also a production app which is copyrighted to BBGrand Piano Studio.
+# Copyright (C) 2022  BBGrandPiano Studio
+# Do not change or remove this copyright notice. Any copyright infringement will be prosecuted.
+# Feel free to use the demo app to play around in the app for seeing how the app works.
+# Getting started is provided in the README.md file.
 from flask import Flask, request, render_template, redirect, flash, session, jsonify, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_debugtoolbar import DebugToolbarExtension
@@ -47,7 +52,7 @@ toolbar = DebugToolbarExtension(app)
 
 
 connect_db(app)
-db.create_all()
+
 
 
 @app.route('/')
