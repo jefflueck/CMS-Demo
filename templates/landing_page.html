@@ -1,0 +1,49 @@
+{%extends "base.html"%}{%block content%}
+<div class="row">
+  <header class="wrapper">
+    <img
+      src="/static/images/pianokeys.png"
+      class="img-responsive"
+      alt="Responsive image"
+      id="topwrapper"
+    />
+  </header>
+  <h1>Client Management</h1>
+  <nav
+    class="navbar navbar-expand-lg navbar-light bg-light justify-content-center"
+  >
+    <ul class="navbar-nav">
+      <li class="navbar-item mx-5 py-1">
+        <a href="/login"
+          ><button class="btn btn-sm btn-outline-success">Login</button></a
+        >
+      </li>
+      <li class="navbar-item mx-5 py-1">
+        <a href="/register"
+          ><button class="btn btn-sm btn-outline-success">Register</button></a
+        >
+      </li>
+    </ul>
+  </nav>
+  <div class="opening_instructions">
+    <p>
+      <span>&#127929;</span>Thank you for coming to the BBGrand Client
+      Management Page.
+    </p>
+
+    <p>
+      <span>&#127929;</span>This is a simple client management system that
+      allows you to add, delete, or edit your student or students and yourself.
+    </p>
+
+    <p>
+      <span>&#127929;</span>New user, use button to register for an account.
+    </p>
+
+    <p>
+      <span>&#127929;</span>Already registered, use the login button to access
+      your account.
+    </p>
+  </div>
+</div>
+{%endblock%}

@@ -1,0 +1,26 @@
+{%extends "base.html"%}{% block content %}
+<div class="row">
+  <header class="wrapper">
+    <img
+      src="/static/images/pianokeys.png"
+      class="img-responsive"
+      alt="Responsive image"
+      id="topwrapper"
+    />
+  </header>
+  <h1>Send Email</h1>
+  <div class="form_wrapper">
+    <p>Sending email as: {{user.first_name}} {{user.last_name}}</p>
+    <form method="POST">
+      {{form.hidden_tag()}}{%for field in form if field.widget.input_type !=
+      'hidden'%}
+      <p>
+        {{field.label}}{{field(cols=130, rows=17)}}{%for errors in
+        field.errors%}<span>{{error}}</span>{%endfor%}
+      </p>
+      {%endfor%}
+      <button class="btn btn-sm btn-success">Send Email</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{%extends "base.html"%}{% block content %}
+<div class="row">
+  <header>
+    <img
+      src="/static/images/pianokeys.png"
+      class="img-responsive"
+      alt="Responsive image"
+      id="topwrapper"
+    />
+  </header>
+  <h1>Welcome {{user.username}}</h1>
+
+<nav
+    class="navbar navbar-expand-lg justify-content-center"
+  >
+    <ul class="navbar-nav">
+      <li class="navbar-item mx-5 py-1">
+        <a href="/add/student"><button class="btn btn-sm btn-outline-success">Add a Student</button></a>
+      </li>
+      <li class="navbar-item mx-5 py-1">
+        <a href="/user/{{user.id}}/edit"><button class="btn btn-sm btn-outline-warning">Edit Your Profile</button></a>
+      </li>
+      <li class="navbar-item mx-5 py-1">
+        <a href="/user/{{user.id}}/delete"><button class="btn btn-sm btn-outline-danger">Delete Your Profile and Students</button></a>
+      </li>
+      <li class="navbar-item mx-5 py-1">
+        <a href="/logout"><button class="btn btn-sm btn-outline-success">Logout</button></a>
+      </li>
+
+    </ul>
+  </nav>
+  <div class="admin_wrapper">
+<h2>Your current students</h2>
+{%for student in students%}
+<ul class="admin_list">
+  <li class="text-center m-2">
+    {{student.first_name}} {{student.last_name}}<span
+      ><a href="/student/{{student.id}}/edit"><button class="btn btn-sm mx-2 btn-outline-warning">Edit</button></a
+      ><a href="/student/{{student.id}}/delete"
+        ><button class="btn btn-sm btn-outline-danger">Delete</button></a>
+  </li>
+</ul>
+{%endfor%}
+</div>
+</div>
+{%endblock%}
+

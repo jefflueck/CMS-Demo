@@ -1,0 +1,25 @@
+{%extends "base.html"%}{%block content%}
+<div class="row">
+  <header>
+    <img
+      src="/static/images/pianokeys.png"
+      class="img-responsive"
+      alt="Responsive image"
+      id="topwrapper"
+    />
+  </header>
+  <h1>Add Student</h1>
+  <div class="form_wrapper">
+    <form method="POST">
+      {{form.hidden_tag()}} {%for field in form if field.widget.input_type !=
+      'hidden'%}
+      <p>
+        {{field.label}}{{field}}{%for errors in
+        field.errors%}<span>{{error}}</span>{%endfor%}
+      </p>
+      {%endfor%}
+      <button class="btn btn-sm btn-success">Add</button>
+    </form>
+    {%endblock%}
+  </div>
+</div>
