@@ -1,8 +1,3 @@
-# This is also a production app which is copyrighted to BBGrand Piano Studio.
-# Copyright (C) 2022  BBGrandPiano Studio
-# Do not change or remove this copyright notice. Any copyright infringement will be prosecuted.
-# Feel free to use the demo app to play around in the app for seeing how the app works.
-# Getting started is provided in the README.md file.
 from flask import Flask, request, render_template, redirect, flash, session, jsonify, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_debugtoolbar import DebugToolbarExtension
@@ -54,6 +49,16 @@ toolbar = DebugToolbarExtension(app)
 connect_db(app)
 
 
+
+@app.errorhandler(404)
+def page_not_found(e):
+    # note that we set the 404 status explicitly
+    return render_template('404.html'), 404
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    # note that we set the 500 status explicitly
+    return render_template('500.html'), 500
 
 @app.route('/')
 def show_homepage():
@@ -133,11 +138,11 @@ def edit_user(user_id):
 
 @app.route('/user/<int:user_id>/delete', methods=['GET', 'POST'])
 def delete_user(user_id):
-  user = User.query.get_or_404(session['user_id'])
+  user = User.query.get_or_404(user_id)
   Student.query.filter_by(guardian=user_id).delete()
   db.session.delete(user)
   db.session.commit()
-  return redirect('/')
+  return redirect(f'/user/{user.id}/view')
 
 
 
@@ -177,6 +182,8 @@ def delete_student(student_id):
   db.session().delete(student)
   db.session.commit()
   return redirect(f'/user/{user.id}/view')
+
+
 
 @app.route('/mail/<int:user_id>/outgoing', methods=['GET','POST'])
 def mail_outgoing(user_id):

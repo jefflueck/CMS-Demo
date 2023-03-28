@@ -34,6 +34,7 @@ class EditForm(FlaskForm):
     phone = StringField("Phone", validators=[InputRequired(), Length(min=3, max=20)])
     email = StringField("Email", validators=[InputRequired(), Email()])
 
+
 class AdminEditForm(FlaskForm):
     """Form for editing a user."""
 
