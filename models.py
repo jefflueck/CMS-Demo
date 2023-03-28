@@ -22,7 +22,7 @@ class User(db.Model):
     last_name = db.Column(db.String(30), nullable=False)
     phone = db.Column(db.String(20), nullable=False)
     email = db.Column(db.String(), unique=True, nullable=False)
-    is_admin = db.Column(db.Boolean, default=True, nullable=False)
+    is_admin = db.Column(db.Boolean, default=False, nullable=False)
     created_at = db.Column(db.DateTime, default=db.func.now(), nullable=False)
 
     user = db.relationship('Student', backref='user', cascade='all, delete-orphan', single_parent=True)

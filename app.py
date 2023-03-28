@@ -74,7 +74,7 @@ def show_register_form():
     last_name = form.last_name.data
     phone = form.phone.data
     email = form.email.data
-    user = User.register(username=username, password=password, first_name=first_name, last_name=last_name, phone=phone, email=email, is_admin=True)
+    user = User.register(username=username, password=password, first_name=first_name, last_name=last_name, phone=phone, email=email, is_admin=False)
     db.session.add(user)
     db.session.commit()
     session['user_id'] = user.id
