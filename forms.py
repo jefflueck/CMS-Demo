@@ -12,6 +12,7 @@ class RegisterForm(FlaskForm):
     last_name = StringField("Last Name", validators=[InputRequired(), Length(min=3, max=30)])
     phone = StringField("Phone", validators=[InputRequired(), Length(min=3, max=20)])
     email = StringField("Email", validators=[InputRequired(), Email()])
+    is_admin = BooleanField("Admin", default=False)
 
 class LoginForm(FlaskForm):
     """Form for logging in."""
