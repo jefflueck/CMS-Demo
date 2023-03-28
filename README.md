@@ -24,6 +24,13 @@ The owner can also update, or delete individual students if needed.
 
 _The software is pre-loaded with a Admin user._
 
+### Admin Login
+
+**Do not delete this user, or you will not be able to see Admin functions.**
+
+- Username: Sam **(case sensitive)**
+- Password: mydemoapp **(case sensitive)**
+
 1. The admin logs in with their username and password.
 2. They will see list of all students registered by the parent user.
 3. They see all users listed below as a second list.
